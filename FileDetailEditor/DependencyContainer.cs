@@ -1,11 +1,6 @@
 using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using FileDetailEditor.Views;
+using System.Windows.Controls;
 
 namespace FileDetailEditor
 {
@@ -18,8 +13,7 @@ namespace FileDetailEditor
             var builder = new ContainerBuilder();
 
             // Register your dependencies here
-            builder.RegisterType<Test1View>().As<UserControl>();
-            builder.RegisterType<Test2View>().As<UserControl>();
+            builder.RegisterType<ID3TagsView>().As<UserControl>();
             Container = builder.Build();
         }
     }

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FileDetailEditor.Views
 {
     /// <summary>
-    /// Interaction logic for Test1View.xaml
+    /// Interaction logic for ID3TagsView.xaml
     /// </summary>
-    public partial class Test1View : UserControl
+    public partial class ID3TagsView : UserControl
     {
-        public Test1View()
+        public ID3TagsView()
         {
             InitializeComponent();
         }

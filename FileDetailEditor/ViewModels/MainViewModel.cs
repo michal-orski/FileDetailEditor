@@ -1,23 +1,14 @@
 using Autofac;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using FileDetailEditor.Base.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using FileDetailEditor.Base.ViewModels;
-using FileDetailEditor.Views;
 
 namespace FileDetailEditor.ViewModels
 {
-    public class MainViewModel: INotifyPropertyChanged
+    public class MainViewModel: ViewModelBase
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
         public ICommand SwitchCommand { get; set; }
         public FrameworkElement SelectedView { get; set; }
 
