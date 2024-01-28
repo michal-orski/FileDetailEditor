@@ -6,7 +6,7 @@
              xmlns:viewmodels="clr-namespace:FileDetailEditor.ViewModels"
              xmlns:resources="clr-namespace:FileDetailEditor.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="450"
+             d:DesignHeight="500"
              d:DesignWidth="800"
              d:Background="Gray">
     <UserControl.DataContext>
@@ -15,9 +15,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,2,0,2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,2,0,2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -37,39 +44,35 @@
         </Grid>
 
         <!-- Lists -->
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-
-            <Label Grid.Row="0" Grid.Column="0" Content="{x:Static resources:Resources.Files_WithColon}"/>
-            <ListView Grid.Row="1" Grid.Column="0"
+        <Label Grid.Row="1" Grid.Column="0" Content="{x:Static resources:Resources.Files_WithColon}"/>
+        <ListView Grid.Row="2" Grid.Column="0"
                       ItemsSource="{Binding FileCollection}"
                       SelectedItem="{Binding SelectedFileInfo}"
-                      d:ItemsSource="{d:SampleData ItemCount=5}">
-                <ListView.View>                    
-                    <GridView>
-                        <GridViewColumn Header="{x:Static resources:Resources.Name}" DisplayMemberBinding="{Binding Path=Name}"/>
-                        <GridViewColumn Header="{x:Static resources:Resources.Extension}" DisplayMemberBinding="{Binding Path=Extension}"/>
-                        <GridViewColumn Header="{x:Static resources:Resources.Size}" DisplayMemberBinding="{Binding Path=Length}"/>
-                        <GridViewColumn Header="{x:Static resources:Resources.Directory}" DisplayMemberBinding="{Binding Path=Directory}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <Label Grid.Row="0" Grid.Column="1" Content="{x:Static resources:Resources.Attributes_WithColon}"/>
-            <ListView Grid.Row="1" Grid.Column="1"  x:Name="listView2" Height="500" d:ItemsSource="{d:SampleData ItemCount=5}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static resources:Resources.Name}" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="{x:Static resources:Resources.Extension}" DisplayMemberBinding="{Binding Path=Extension}"/>
+                    <GridViewColumn Header="{x:Static resources:Resources.Size}" DisplayMemberBinding="{Binding Path=Length}"/>
+                    <GridViewColumn Header="{x:Static resources:Resources.Directory}" DisplayMemberBinding="{Binding Path=Directory}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <Label Grid.Row="1" Grid.Column="1" Content="{x:Static resources:Resources.Attributes_WithColon}"/>
+        <ListView Grid.Row="2" Grid.Column="1"
+                      ItemsSource="{Binding FileAttributeCollection}"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static resources:Resources.Name}" DisplayMemberBinding="{Binding Path=Key}"/>
+                    <GridViewColumn Header="{x:Static resources:Resources.Value}" DisplayMemberBinding="{Binding Path=Value}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </UserControl>

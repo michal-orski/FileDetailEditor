@@ -158,5 +158,14 @@ namespace FileDetailEditor.Properties {
                 return ResourceManager.GetString("Subdirectories", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
     }
 }

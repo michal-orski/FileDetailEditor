@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         Title="File detail editor" Height="450" Width="800">
-    <StackPanel Orientation="Vertical">
-        <Border BorderThickness="0,0,0,0.5" BorderBrush="Black" CornerRadius="1" Background="Gainsboro">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderThickness="0,0,0,0.5" BorderBrush="Black" CornerRadius="1" Background="Gainsboro">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -22,6 +26,6 @@
         </Border>
 
 
-        <ContentControl Content="{Binding SelectedView}" />
-    </StackPanel>
+        <ContentControl Grid.Row="1" Content="{Binding SelectedView}"  VerticalAlignment="Stretch"/>
+    </Grid>
 </Window>

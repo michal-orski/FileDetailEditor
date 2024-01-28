@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.Input;
 using FileDetailEditor.Base.ViewModels;
+using FileDetailEditor.Helpers;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Forms;
@@ -21,7 +22,7 @@ namespace FileDetailEditor.ViewModels
             }
         }
 
-        public ObservableCollection<object> FileAttributeCollection { get; set; } = [];
+        public Dictionary<string, object?> FileAttributeCollection { get; set; } = [];
 
 
         private string _selectedDirectoryPath = string.Empty;
@@ -126,24 +127,21 @@ namespace FileDetailEditor.ViewModels
         {
             if (SelectedFileInfo == null)
             {
-                if (FileAttributeCollection.Any())
+                if (FileAttributeCollection.Count != 0)
                     FileAttributeCollection = [];
                 return;
             }
 
-            FileAttributeCollection = new ObservableCollection<object>(GetAllId3DataFromSelectedFileInfo());
+            FileAttributeCollection = GetAllId3DataFromSelectedFileInfo();
         }
 
 
-        private List<object> GetAllId3DataFromSelectedFileInfo()
+        private Dictionary<string, object?> GetAllId3DataFromSelectedFileInfo()
         {
-            var Id3Data = new List<object>();
-
             if (SelectedFileInfo == null)
-                return Id3Data;
+                return [];
 
-
-            return Id3Data;
+            return FileTagHelper.GetTagsFromFile(SelectedFileInfo);
         }
 
 

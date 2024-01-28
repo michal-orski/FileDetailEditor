@@ -150,4 +150,7 @@
   <data name="Subdirectories" xml:space="preserve">
     <value>Podkatalogi</value>
   </data>
+  <data name="Value" xml:space="preserve">
+    <value>Wartość</value>
+  </data>
 </root>
